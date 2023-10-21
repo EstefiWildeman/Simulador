@@ -13,15 +13,18 @@ const popupModal = new bootstrap.Modal(document.getElementById('popupModal'));
 
 document.addEventListener('DOMContentLoaded', function () {
     const popupModal = new bootstrap.Modal(document.getElementById('popupModal'));
-    
-    document.getElementById('comenzarButton').addEventListener('click', function () {
-        popupModal.hide(); // Cierra el cuadro de diálogo modal sin redirigir a otra página
+
+    // Agrega un event listener para el evento 'shown.bs.modal'
+    popupModal._element.addEventListener('shown.bs.modal', function () {
+        document.getElementById('salirButton').addEventListener('click', function () {
+            window.location.href = 'https://www.google.com';
+        });
     });
+
+    popupModal.show(); // Abre el modal al cargar la página
 });
 
-document.getElementById('salirButton').addEventListener('click', function () {
-    window.location.href = 'https://www.google.com.ar'; 
-});
+
 
 // Inicialización de la lista de compra y el total
 let listaCompra = [];
